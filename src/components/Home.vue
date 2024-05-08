@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div v-for="(item, index) in zprs" v-bind:key="index">
+    <div v-for="(item, index) in store.posts" v-bind:key="index">
 
       <div class="movie">
         <img :src=item.url class="movie-img" />
@@ -29,21 +29,10 @@
 
 <script setup>
 
+
 import { useStore } from "../store/Store";
 const store = useStore();
-
-
-const props = defineProps({
-  zprs: {
-    type: Array,
-    required: true,
-    default: () => { },
-  },
-});
-
-
-
-
+store.fetchPosts()
 </script>
 
 
