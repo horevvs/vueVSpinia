@@ -54,7 +54,7 @@
 </template>
 <script setup>
 
-import Sendorder from './Sendorder.vue'
+
 import { useStore } from "../store/Store";
 const store = useStore();
 
