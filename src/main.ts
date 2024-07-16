@@ -1,7 +1,7 @@
 import { createPinia } from "pinia";
 import { createApp } from "vue";
 import { createMemoryHistory, createRouter } from 'vue-router'
-// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
 
 // ИМПОРТ КОМПОНЕНТОВ
 import App from "./App.vue";

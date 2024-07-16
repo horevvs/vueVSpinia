@@ -1,9 +1,7 @@
 // импортируем нашу пиню чтобы она была подключена
 import { defineStore } from "pinia";
 
-
 export type storeState = {
-  
     posts: any;
     username: any;
     password: any;
@@ -21,18 +19,14 @@ export type storeState = {
     dataAfterfetch: null;
     show: boolean;
     hide: boolean;
-    sum: any;
-    // quantity: any;
+    quantity: any;
+    sum: boolean
 };
-
-
-
 
 export const useStore = defineStore("Store", {
 
-
-
     state: () => ({
+
         posts: null,
         username: null,
         password: null,
@@ -52,17 +46,15 @@ export const useStore = defineStore("Store", {
         hide: false,
 
     } as storeState),
-
     getters: {
         doubleCount: (state) => {
             let result = 0
-            result = state.addToposts3.reduce(function (sum: number, elem: number) {
+            result = state.addToposts3.reduce(function (sum: number, elem: { quantity: number; id: number; }) {
                 return (sum + elem.quantity * elem.id);
             }, 0);
             return result
         }
     },
-
 
     actions: {
 
@@ -71,7 +63,7 @@ export const useStore = defineStore("Store", {
             const session = this.num
             const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${session}`);
             const result = await response.json();
-            result.forEach((item: number) => { item.quantity = 0 });
+            result.forEach((item: { quantity: number; }) => { item.quantity = 0 });
             this.posts = result
 
         },
@@ -85,11 +77,11 @@ export const useStore = defineStore("Store", {
         },
 
         //  фильтруем добавляем в корзину в зависимости от количества кликов
-        async addtoBasket(id: number) {
-
-            this.addtobasketpost.push(this.posts.filter((item: { id: number; }) => item.id == id))
+        async addtoBasket(id: any) {
+            console.log(id)
+            this.addtobasketpost.push(this.posts.filter((item: { id: any; }) => item.id == id))
             this.addtobasketpost.every((item: {
-                id: number; quantity: number;
+                [x: string]: any; quantity: number;
             }[]) => {
                 if (item[0].id == id) {
                     item[0].quantity++
@@ -119,8 +111,8 @@ export const useStore = defineStore("Store", {
         },
 
         //вычесть
-        quantityPlus(id: number) {
-            this.addToposts3.every((item: { id: number; quantity:any; }) => {
+        quantityPlus(id: any) {
+            this.addToposts3.every((item: { id: any; quantity: number; }) => {
                 if (item.id == id) {
                     if (item.quantity > 0) {
                         item.quantity++
@@ -161,13 +153,5 @@ export const useStore = defineStore("Store", {
                 .then((json) => console.log(json));
 
         }
-
-
-
     },
 });
-
-
-
-
-

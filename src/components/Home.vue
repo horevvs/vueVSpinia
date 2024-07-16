@@ -29,12 +29,10 @@
 
 <script setup>
 
-
 import { useStore } from "../store/Store";
 const store = useStore();
 store.fetchPosts()
 </script>
-
 
 <style lang="css" scoped>
 .movie {

@@ -1,7 +1,5 @@
 <template>
 
-
-
     <div>
         <header class="header mt-5">
             <span class="header-text d-flex   mx-5">
@@ -34,12 +32,8 @@
                 </div>
             </div>
 
-
-
             <button @click="store.sendorder()" type="button" class="btn btn-primary">Сделать заказ</button>
         </div>
-
-
 
     </div>
 </template>
@@ -48,7 +42,5 @@
 
 import { useStore } from "../store/Store";
 const store = useStore();
-
-
 
 </script>

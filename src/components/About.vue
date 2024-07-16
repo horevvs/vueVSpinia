@@ -2,7 +2,6 @@
 
   <div>
 
-
     <button type="button" class="btn btn-danger text-danger m-3"> <router-link class="link-light" :to="'/'"> На
         главную</router-link></button>
 
@@ -42,6 +41,5 @@ export default {
     return { store, ara }
   },
 
- 
 }
 </script>
