@@ -1,7 +1,7 @@
 <template>
   <div>
-ddd {{ posts }}
-    <div v-for="(item, index) in posts" v-bind:key="index">
+
+    <div v-for="(item, index) in  dd " v-bind:key="index">
 
       <div class="movie">
         <img :src=item.url class="movie-img" />
@@ -33,7 +33,9 @@ import { storeToRefs } from 'pinia'
 // import { computed } from 'vue'
 
 const store = useCounterStore();
-// store.fetchPosts()
+store.fetchPosts()
+
+
 const {posts } = storeToRefs(store)
 
 // eslint-disable-next-line no-undef

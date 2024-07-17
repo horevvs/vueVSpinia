@@ -71,19 +71,3 @@ const Message = computed(() => {return store.addtobasketpost.length !== 0 ? `О�
 
 </script>
 
-<!-- <script setup>
-
-import { computed } from 'vue'
-// import { useStore } from "../store/Store";
-// const store = useStore();
-// store.fetchPosts()
-
-const Message = computed(() => {
-
-  return store.addtobasketpost.length !== 0 ? `Открыть корзину` : 'В корзине пусто'
-})
-
-import { useStore } from "./store/Store";
-const store = useStore();
-// store.fetchPosts()
-</script> -->
