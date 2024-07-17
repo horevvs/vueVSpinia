@@ -15,9 +15,7 @@
 
     </div>
 
-
     <div class="d-flex flex-column" v-if="store.addToposts3.length !== 0">
-
 
       <div tag="div" v-for="(item, index) in store.addToposts3" v-bind:key="index">
         <div class="card  m-3" style="width: 18rem;">
@@ -48,15 +46,12 @@
       </header>
     </div>
 
-
   </div>
 
 </template>
 <script setup>
 
-import Sendorder from './Sendorder.vue'
 import { useStore } from "../store/Store";
 const store = useStore();
-
 
 </script>

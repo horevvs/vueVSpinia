@@ -1,11 +1,7 @@
 <template>
-
   <div>
-
-
     <button type="button" class="btn btn-danger text-danger m-3"> <router-link class="link-light" :to="'/'"> На
         главную</router-link></button>
-
     <div class="   container containers mt-5  ">
       <h1>Карточка товара</h1>
       <div v-for="(item, index) in   store.dataAfterfetch" v-bind:key="index">
@@ -19,11 +15,9 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
-
 import { useStore } from "../store/Store";
 import { useRoute } from 'vue-router'
 import { onMounted } from 'vue'
@@ -42,6 +36,5 @@ export default {
     return { store, ara }
   },
 
- 
 }
 </script>

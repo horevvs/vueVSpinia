@@ -2,11 +2,9 @@
 
   <div v-if="store.access" class="container d-flex flex-column ">
 
-
     <header class="header mt-5">
       <span class="header-text  ">
         <h2>имитируем вход в личный кабинет </h2>
-
       </span>
     </header>
 
@@ -22,7 +20,6 @@
           placeholder="enter this Password Password=pass">
       </div>
       <button @:click="store.provideaccess()" type="button" class="btn btn-primary">Войти</button>
-
     </div>
 
   </div>
@@ -44,8 +41,8 @@
             {{ store.addtobasketpost.length }}
             <span class="visually-hidden">unread messages</span></span>
         </button>
-
       </div>
+
     </header>
     <div class="position-relative">
 
@@ -55,9 +52,6 @@
     </div>
 
   </div>
-
-
-
 
 </template>
 
@@ -72,9 +66,6 @@ const Message = computed(() => {
 
   return store.addtobasketpost.length !== 0 ? `Открыть корзину` : 'В корзине пусто'
 })
-
-
-
 
 import { useStore } from "./store/Store";
 const store = useStore();

@@ -1,7 +1,6 @@
 import { createPinia } from "pinia";
 import { createApp } from "vue";
 import { createMemoryHistory, createRouter } from 'vue-router'
-// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // ИМПОРТ КОМПОНЕНТОВ
 import App from "./App.vue";
@@ -9,7 +8,6 @@ import Home from './components/Home.vue'
 import About from './components/About.vue'
 import Basket from './components/Basket.vue'
 import Sendorder from './components/Sendorder.vue'
-
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -26,15 +24,7 @@ const router = createRouter({
     routes,
 })
 
-
-
-
-
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)
-// app.use(BootstrapVue)
-// // Optionally install the BootstrapVue icon components plugin
-// app.use(IconsPlugin)
-
 app.mount('#app')
