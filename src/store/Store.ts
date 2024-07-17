@@ -26,7 +26,6 @@ export type storeState = {
 export const useStore = defineStore("Store", {
 
     state: () => ({
-
         posts: null,
         username: null,
         password: null,
