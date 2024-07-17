@@ -15,40 +15,29 @@
           <div class="movie-buttons">
             <button type="button" class="btn btn-danger text-danger mt-1"> <router-link
                 class="link-light" :to="'/' + item.id"> Посмотреть товар</router-link></button>
-            <button  @click="store.addtoBasket(item.id)" class="btn btn-primary m-2 "> В корзину</button>
+            <button  @click="addtoBasket(item.id)" class="btn btn-primary m-2 "> В корзину</button>
           </div>
         </div>
       </div>
     </div>
     <button @click="addlist"
-      class="btn btn-danger  position-absolute top-100 start-50 translate-middle m-5">Добавить список</button>
+      class="btn btn-danger  position-absolute top-100 start-50 translate-middle">Добавить список</button>
   </div>
 </template>
 
  <script setup>
 import { useCounterStore } from '../store/Store'
 import { storeToRefs } from 'pinia'
-// import { computed } from 'vue'
 
 const store = useCounterStore();
 store.fetchPosts()
 const { addlist } = store
+const { addtoBasket } = store
 
 const {posts} = storeToRefs(store)
 
 console.log(posts.value)
 console.log(posts.value)
-
-// eslint-disable-next-line no-undef
-// const Message = computed(() => {return store.fetchPosts()})
-// const { access } = storeToRefs(store)
-// const { username } = storeToRefs(store)
-// const { password } = storeToRefs(store)
-
-// const { provideaccess } = store
-// const { hidebasketlabel } = store
-
-
 
 </script>
 

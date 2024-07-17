@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
 export const useCounterStore = defineStore('counter', () => {
-    let posts: any = ref(null)
+    const posts: any = ref(null)
     const result: any = ref(null)
     const username: any = ref(null)
     const password: any = ref(null)
@@ -18,7 +18,8 @@ export const useCounterStore = defineStore('counter', () => {
     const modal: { value: boolean; } = ref(false)
     const modalunder: { value: boolean; } = ref(false)
     const access: { value: boolean; } = ref(true)
-    const dataAfterfetch: { value: boolean; } = ref(true)
+    // eslint-disable-next-line prefer-const
+    let dataAfterfetch: { value: any; } = ref(null)
     const show: { value: boolean; } = ref(true)
     const hide: { value: boolean; } = ref(false)
 
