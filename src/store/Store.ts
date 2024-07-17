@@ -42,7 +42,7 @@ export const useCounterStore = defineStore('counter', () => {
         const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit= ${num.value}`);
         const result = await response.json();
         result.forEach((item: { quantity: number; }) => { item.quantity = 0 });
-        posts = result
+        posts.value = result
     }
 
     async function addtoBasket(id: any) {

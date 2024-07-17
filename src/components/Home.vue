@@ -16,13 +16,11 @@
             <button type="button" class="btn btn-danger text-danger mt-1"> <router-link
                 class="link-light" :to="'/' + item.id"> Посмотреть товар</router-link></button>
             <button  @click="store.addtoBasket(item.id)" class="btn btn-primary m-2 "> В корзину</button>
-
           </div>
         </div>
-
       </div>
     </div>
-    <button @click="store.addlist()"
+    <button @click="addlist"
       class="btn btn-danger  position-absolute top-100 start-50 translate-middle m-5">Добавить список</button>
   </div>
 </template>
@@ -34,6 +32,7 @@ import { storeToRefs } from 'pinia'
 
 const store = useCounterStore();
 store.fetchPosts()
+const { addlist } = store
 
 const {posts} = storeToRefs(store)
 
