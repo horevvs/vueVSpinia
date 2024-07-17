@@ -1,8 +1,8 @@
 <template>
 
   <div class="mt-3">
-
-    <div class="d-flex flex-wrap justify-content-evenly">
+корзина
+    <!-- <div class="d-flex flex-wrap justify-content-evenly">
       <button type="button" class="btn btn-danger  mt-3 ">
         <router-link class="link-light" :to="'/sendorder'"> Оформить заказ </router-link>
       </button>
@@ -44,14 +44,14 @@
           <h2> Добавьте пожалуста товары в корзину. </h2>
         </span>
       </header>
-    </div>
+    </div> -->
 
   </div>
 
 </template>
-<script setup>
+<!-- <script setup>
 
 import { useStore } from "../store/Store";
 const store = useStore();
 
-</script>
+</script> -->

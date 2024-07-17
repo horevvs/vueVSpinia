@@ -20,6 +20,7 @@
           placeholder="enter this Password Password=pass">
       </div>
       <button @:click="provideaccess" type="button" class="btn btn-primary">Войти</button>
+      <button @:click="ss" type="button" class="btn btn-primary">alert</button>
     </div>
 
   </div>
@@ -27,18 +28,19 @@
   <div v-else>
 
     <header class="header mt-5">
-      <button @:click="provideaccess" type="button" class="btn btn-primary px-2 mx-5">Выход</button>
+      <button @:click="store.provideaccess()" type="button" class="btn btn-primary px-2 mx-5">Выход</button>
       <span class="header-text text-center ">
         <h2 class="pb-5"> Пример SPA c применением Pinia </h2>
       </span>
 
       <div class="position-absolute top-0 end-0 m-5 ">
         <button type="button" class="btn btn-primary position-relative" v-if="store.show">
-          <router-link @:click="hidebasketlabel" class="link-light" :to="'/basket'">
+          <router-link @:click="store.hidebasketlabel()" class="link-light" :to="'/basket'">
             {{ Message }}
           </router-link>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary">
-            {{ store.addtobasketpost.length }}</span>
+            {{ store.addtobasketpost.length }}
+            <span class="visually-hidden">unread messages</span></span>
         </button>
       </div>
 
@@ -57,19 +59,18 @@
 <script setup>
 import { useCounterStore } from './store/Store'
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
 
 const store = useCounterStore()
+// `name` and `doubleCount` are reactive refs
+// This will also extract refs for properties added by plugins
+// but skip any action or non reactive (non ref/reactive) property
 const { access } = storeToRefs(store)
-const { username } = storeToRefs(store)
-const { password } = storeToRefs(store)
+// the increment action can just be destructured
 
-const { provideaccess } = store
-const { hidebasketlabel } = store
-
-const Message = computed(() => {return store.addtobasketpost.length !== 0 ? `Открыть корзину` : 'В корзине пусто'})
+const { ss, provideaccess} = store
 
 </script>
+
 
 <!-- <script setup>
 

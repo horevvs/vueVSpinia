@@ -1,7 +1,7 @@
 <template>
   <div>
-
-    <div v-for="(item, index) in store.posts" v-bind:key="index">
+ddd {{ posts }}
+    <div v-for="(item, index) in posts" v-bind:key="index">
 
       <div class="movie">
         <img :src=item.url class="movie-img" />
@@ -27,14 +27,40 @@
   </div>
 </template>
 
-<script setup>
+ <script setup>
+import { useCounterStore } from '../store/Store'
+import { storeToRefs } from 'pinia'
+// import { computed } from 'vue'
+
+const store = useCounterStore();
+// store.fetchPosts()
+const {posts } = storeToRefs(store)
+
+// eslint-disable-next-line no-undef
+// const Message = computed(() => {return store.fetchPosts()})
+// const { access } = storeToRefs(store)
+// const { username } = storeToRefs(store)
+// const { password } = storeToRefs(store)
+
+// const { provideaccess } = store
+// const { hidebasketlabel } = store
+
+
+
+</script>
+
+
+<!-- <script setup>
+
+
 
 import { useStore } from "../store/Store";
 const store = useStore();
 store.fetchPosts()
-</script>
+</script> -->
 
-<style lang="css" scoped>
+
+<!-- <style lang="css" scoped>
 .movie {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -90,4 +116,4 @@ store.fetchPosts()
   color: #fff;
   background: #ff2a2a;
 }
-</style>
+</style> -->
