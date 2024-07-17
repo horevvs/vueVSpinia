@@ -1,7 +1,7 @@
 <template>
   <div>
-
-    <div v-for="(item, index) in  dd " v-bind:key="index">
+    
+    <div v-for="(item, index) in  posts " v-bind:key="index">
 
       <div class="movie">
         <img :src=item.url class="movie-img" />
@@ -35,8 +35,10 @@ import { storeToRefs } from 'pinia'
 const store = useCounterStore();
 store.fetchPosts()
 
+const {posts} = storeToRefs(store)
 
-const {posts } = storeToRefs(store)
+console.log(posts.value)
+console.log(posts.value)
 
 // eslint-disable-next-line no-undef
 // const Message = computed(() => {return store.fetchPosts()})
@@ -51,18 +53,7 @@ const {posts } = storeToRefs(store)
 
 </script>
 
-
-<!-- <script setup>
-
-
-
-import { useStore } from "../store/Store";
-const store = useStore();
-store.fetchPosts()
-</script> -->
-
-
-<!-- <style lang="css" scoped>
+<style lang="css" scoped>
 .movie {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -118,4 +109,4 @@ store.fetchPosts()
   color: #fff;
   background: #ff2a2a;
 }
-</style> -->
+</style>

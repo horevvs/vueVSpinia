@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
 export const useCounterStore = defineStore('counter', () => {
-    let posts: any = ref(333)
+    let posts: any = ref(null)
     const result: any = ref(null)
     const username: any = ref(null)
     const password: any = ref(null)
@@ -34,11 +34,7 @@ export const useCounterStore = defineStore('counter', () => {
         const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${session}`);
         const result = await response.json();
         result.forEach((item: { quantity: number; }) => { item.quantity = 0 });
-        posts = result
-    }
-
-    function ss() {
-        num.value++
+        posts.value = result
     }
 
     async function addlist() {
@@ -126,7 +122,7 @@ export const useCounterStore = defineStore('counter', () => {
     }
 
     return {
-        ss, username,
+        username,
         doubleCount, addlist, fetchPosts, addtoBasket, quantityMinus, quantityPlus, hidebasketlabel, provideaccess, sendorder,
         num, show, hide, access, posts, result, password, addtobasketpost, addToposts2, addToposts3, addToposts4, adress, name, email, modal, modalunder, dataAfterfetch
     }
