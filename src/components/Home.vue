@@ -33,12 +33,7 @@ const store = useCounterStore();
 store.fetchPosts()
 const { addlist } = store
 const { addtoBasket } = store
-
 const {posts} = storeToRefs(store)
-
-console.log(posts.value)
-console.log(posts.value)
-
 </script>
 
 <style lang="css" scoped>

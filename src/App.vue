@@ -35,10 +35,9 @@
       <div class="position-absolute top-0 end-0 m-5 ">
         <button type="button" class="btn btn-primary position-relative" v-if="store.show">
           <router-link @:click="hidebasketlabel" class="link-light" :to="'/basket'">
-            {{ Message }}
+            {{ Message }} 
           </router-link>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary">
-            {{ store.addtobasketpost.length }}</span>
+         
         </button>
       </div>
 
@@ -70,4 +69,3 @@ const { hidebasketlabel } = store
 const Message = computed(() => {return store.addtobasketpost.length !== 0 ? `Открыть корзину` : 'В корзине пусто'})
 
 </script>
-

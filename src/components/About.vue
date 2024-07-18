@@ -3,7 +3,6 @@
     <button type="button" class="btn btn-danger text-danger m-3"> <router-link class="link-light" :to="'/'"> На
         главную</router-link></button>
     <div class="   container containers mt-5  ">
-
       <h1>Карточка товара</h1>
       <div v-for="(item, index) in store.dataAfterfetch" v-bind:key="index">
         <div class="card m-1" style="width: 22rem;">
@@ -14,7 +13,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -28,7 +26,6 @@ import { onMounted } from 'vue'
 const route = useRoute()
 const ara = route.params.id
 const store = useCounterStore();
-store.fetchPosts()
 
 onMounted(() => {
   store.dataAfterfetch = store.posts.filter(item => item.id == ara)
