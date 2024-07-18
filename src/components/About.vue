@@ -18,18 +18,14 @@
 </template>
 
 <script setup>
-
 import { useCounterStore } from '../store/Store'
 import { useRoute } from 'vue-router'
 import { onMounted } from 'vue'
-
 const route = useRoute()
 const ara = route.params.id
 const store = useCounterStore();
-
 onMounted(() => {
   store.dataAfterfetch = store.posts.filter(item => item.id == ara)
 })
-
 </script>
 

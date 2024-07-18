@@ -1,8 +1,10 @@
 // импортируем нашу пиню чтобы она была подключена
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-
+// организуем нашу стору
 export const useCounterStore = defineStore('counter', () => {
+    
+// создаем переменный чтобы работать с сотоянием
     const posts: any = ref(null)
     const result: any = ref(null)
     const username: any = ref(null)
@@ -22,16 +24,16 @@ export const useCounterStore = defineStore('counter', () => {
     const show: { value: boolean; } = ref(true)
     const hide: { value: boolean; } = ref(false)
 
+// наше вычисляемео свойство чтобы отображать количество в корзине
     const doubleCount = computed(() => {
         let result = 0
         result = addToposts3.value.reduce(function (sum: number, elem: { quantity: number; id: number; }) {
             return (sum + elem.quantity * elem.id);
         }, 0);
-        console.log('dd')
         return result
   
     })
-    // дорендеринг с апи
+// дорендеринг с апи
     async function fetchPosts() {
         const session = num.value
         const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${session}`);
@@ -40,7 +42,7 @@ export const useCounterStore = defineStore('counter', () => {
         posts.value = result
     }
 
-    //добавление к списку
+//добавление к списку
     async function addlist() {
         num.value = num.value + 5
         const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit= ${num.value}`);
@@ -48,12 +50,9 @@ export const useCounterStore = defineStore('counter', () => {
         result.forEach((item: { quantity: number; }) => { item.quantity = 0 });
         posts.value = result
     }
-
-    //добавление в корзину
+//добавление в корзину
     async function addtoBasket(id: any) {
-        // console.log(id)
         addtobasketpost.value.push(posts.value.filter((item: { id: any; }) => item.id == id))
-
         addtobasketpost.value.every((item: {
             [x: string]: any; quantity: number;
         }[]) => {
@@ -71,7 +70,7 @@ export const useCounterStore = defineStore('counter', () => {
         });
     }
 
-    // прибавить в корзине
+// прибавить в корзине
     function quantityMinus(id: any) {
         addToposts3.value.every((item: { id: any; quantity: number; }) => {
             if (item.id == id) {
@@ -85,7 +84,7 @@ export const useCounterStore = defineStore('counter', () => {
         })
     }
 
-    //вычесть
+// вычесть в корзине
     function quantityPlus(this: any, id: any) {
         addToposts3.value.every((item: { id: any; quantity: number; }) => {
             if (item.id == id) {
@@ -97,14 +96,19 @@ export const useCounterStore = defineStore('counter', () => {
                 return true;
             }
         })
-        console.log(addToposts3.value)
+      
     }
-    // легкий элемент улучшения ui убирает отображение количнства в корине товаров
+// скрыть корзину
     function hidebasketlabel() {
         show.value = !show.value
     }
 
-    //проверка входа
+    // выход с приложения
+    function exit() {
+        window.location.reload();
+    }
+
+// проверка входа
     function provideaccess() {
         if (username.value === 'user01' && password.value === 'pass') {
             access.value = !access.value
@@ -113,7 +117,7 @@ export const useCounterStore = defineStore('counter', () => {
         }
     }
 
-    //отправить заказ
+// отправить заказ
     function sendorder() {
         alert('С input берем значения, формирем с учетом того в каком виде должен быть JSON и постим туда, по аналогии по идеи надо отправить массив объектов с адресом, именем, почтой, тип товаров и цена')
         fetch('https://jsonplaceholder.typicode.com/posts/1', {
@@ -132,10 +136,14 @@ export const useCounterStore = defineStore('counter', () => {
             .then((json) => console.log(json));
     }
 
+// возврашаем со сторы, чтобы могли в компоненту импортировтаь
     return {
-        username, doubleCount,
-        addlist, fetchPosts, addtoBasket, quantityMinus, quantityPlus, hidebasketlabel, provideaccess, sendorder,
-        num, show, hide, access, posts, result, password, addtobasketpost, addToposts2, addToposts3, addToposts4, adress, name, email, modal, modalunder, dataAfterfetch
+        username, doubleCount,num, show, hide, access, posts, 
+        result, password, addtobasketpost, addToposts2, addToposts3, 
+        addToposts4, adress, name, email, modal, modalunder, dataAfterfetch,
+
+        exit,addlist, fetchPosts, addtoBasket, quantityMinus, 
+        quantityPlus, hidebasketlabel, provideaccess, sendorder,
     }
 })
 

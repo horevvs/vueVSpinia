@@ -1,7 +1,5 @@
 <template>
-
   <div class="mt-3">
-
     <div class="d-flex flex-wrap justify-content-evenly">
       <button type="button" class="btn btn-danger  mt-3 ">
         <router-link class="link-light" :to="'/sendorder'"> Оформить заказ </router-link>
@@ -12,11 +10,9 @@
       <button @:click="store.hidebasketlabel()" type="button" class="btn btn-danger text-danger m-3 ">
         <router-link class="link-light" :to="'/'"> На главную </router-link>
       </button>
-
     </div>
 
     <div class="d-flex flex-column" v-if="store.addToposts3.length !== 0">
-
       <div tag="div" v-for="(item, index) in store.addToposts3" v-bind:key="index">
         <div class="card  m-3" style="width: 18rem;">
           <div class="card-body text-center">
@@ -32,10 +28,8 @@
             <button @:click="quantityPlus(item.id)" type="button" className="btn btn-dark btn-sm mx-2 px-2">
               + </button>
           </div>
-
         </div>
       </div>
-
     </div>
 
     <div v-else>
@@ -45,18 +39,14 @@
         </span>
       </header>
     </div>
-
   </div>
 
 </template>
 <script setup>
-
 import {useCounterStore } from "../store/Store";
 import { storeToRefs } from 'pinia'
-
 const store = useCounterStore();
-const {quantityMinus } = store
+const { quantityMinus } = store
 const { quantityPlus } = store
 const { doubleCount } = storeToRefs(store)
-
 </script>

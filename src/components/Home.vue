@@ -1,17 +1,13 @@
 <template>
   <div>
-    
     <div v-for="(item, index) in  posts " v-bind:key="index">
-
       <div class="movie">
         <img :src=item.url class="movie-img" />
         <div>
           <div class="movie-name ">
             <span> {{ item.title }} </span>
-
             <span> стоимость {{ Math.round(item.id) }} руб. </span>
           </div>
-
           <div class="movie-buttons">
             <button type="button" class="btn btn-danger text-danger mt-1"> <router-link
                 class="link-light" :to="'/' + item.id"> Посмотреть товар</router-link></button>
@@ -28,7 +24,6 @@
  <script setup>
 import { useCounterStore } from '../store/Store'
 import { storeToRefs } from 'pinia'
-
 const store = useCounterStore();
 store.fetchPosts()
 const { addlist } = store
@@ -46,19 +41,15 @@ const {posts} = storeToRefs(store)
   padding: 10px;
   border-radius: 10px;
 }
-
 .movie-accept {
   margin-right: 10px;
 }
-
 .movie-img {
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 30%;
-
 }
-
 .movie-name {
   display: flex;
   flex-direction: column;
@@ -66,28 +57,23 @@ const {posts} = storeToRefs(store)
   font-size: 20px;
   margin-bottom: 20px;
 }
-
 .movie-overview {
   display: block;
   margin-bottom: 20px;
 }
-
 .movie-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .movie-buttons-watched {
   color: #fff;
   background: #1eb4c3;
 }
-
 .movie-buttons-watched__icon {
   width: 15px;
   margin-left: 10px;
 }
-
 .movie-buttons-delete {
   color: #fff;
   background: #ff2a2a;
