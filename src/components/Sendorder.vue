@@ -4,7 +4,19 @@
         <header class="header mt-5">
             <span class="header-text d-flex   mx-5">
                 <h2>Оформление заказа </h2>
+                <button type="button" @:click="hidebasketlabel" class="btn btn-primary">
+                    <router-link class="link-light"
+                        :to="'/'">
+                        На главную
+                    </router-link> </button>
+                    <button type="button" class="btn btn-primary">
+                    <router-link class="link-light"
+                        :to="'/basket'">
+                        В корзину
+                    </router-link> </button>
             </span>
+
+
         </header>
 
         <div class="  fs-5 mt-5">
@@ -40,7 +52,8 @@
 
 <script setup>
 
-import { useStore } from "../store/Store";
-const store = useStore();
+import { useCounterStore } from "../store/Store";
 
+const store = useCounterStore();
+const { hidebasketlabel } = store
 </script>

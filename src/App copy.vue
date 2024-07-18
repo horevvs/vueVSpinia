@@ -29,6 +29,7 @@
 
     <header class="header mt-5">
       <button @:click="store.provideaccess()" type="button" class="btn btn-primary px-2 mx-5">Выход</button>
+ 
       <span class="header-text text-center ">
         <h2 class="pb-5"> Пример SPA c применением Pinia </h2>
       </span>
