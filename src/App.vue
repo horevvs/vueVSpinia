@@ -22,7 +22,7 @@
           placeholder="enter this Password Password=pass">
       </div>
       <button @:click="store.provideaccess()" type="button" class="btn btn-primary">Войти</button>
-
+    
     </div>
 
   </div>
@@ -33,7 +33,18 @@
       <button @:click="store.provideaccess()" type="button" class="btn btn-primary px-2 mx-5">Выход</button>
       <span class="header-text text-center ">
         <h2 class="pb-5"> Пример SPA c применением Pinia </h2>
+    
       </span>
+
+      <div class="row g-3 d-flex justify-content-center  ">
+        <div class="col-auto">
+          <label for="inputPassword2" class="visually-hidden">Поиск</label>
+          <input v-model=store.model type="password" class="form-control" id="inputPassword2" placeholder="поиск">
+        </div>
+        <div class="col-auto">
+          <button @:click="store.filterbyinput()" type="submit" class="btn btn-primary mb-3">искать</button>
+        </div>
+      </div>
 
       <div class="position-absolute top-0 end-0 m-5 ">
         <button type="button" class="btn btn-primary position-relative" v-if="store.show">
@@ -64,6 +75,10 @@
 <script setup>
 
 import { computed } from 'vue'
+
+
+
+
 // import { useStore } from "../store/Store";
 // const store = useStore();
 // store.fetchPosts()
@@ -72,6 +87,11 @@ const Message = computed(() => {
 
   return store.addtobasketpost.length !== 0 ? `Открыть корзину` : 'В корзине пусто'
 })
+
+
+
+
+
 
 
 

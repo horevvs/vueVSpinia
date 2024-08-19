@@ -8,6 +8,7 @@ export const useStore = defineStore("Store", {
     state: () => ({
 
         posts: null,
+        model: null,
         username: null,
         password: null,
         addtobasketpost: [],
@@ -55,6 +56,19 @@ export const useStore = defineStore("Store", {
             const result = await response.json();
             result.forEach((item) => { item.quantity = 0 });
             this.posts = result
+        },
+
+
+        async filterbyinput() {
+
+            //  просто фильтрует по имени, как варинт простая фильтрация по теме          
+
+            let res = this.posts.filter(item => item.title == this.model)
+            console.log(this.posts);
+
+            this.posts = res
+
+
         },
 
         //  фильтруем добавляем в корзину в зависимости от количества кликов
@@ -132,9 +146,6 @@ export const useStore = defineStore("Store", {
                 .then((json) => console.log(json));
 
         }
-
-
-
     },
 });
 
