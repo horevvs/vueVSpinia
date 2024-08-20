@@ -18,11 +18,11 @@
       </div>
       <div class="mb-3 w-25">
         <label for="exampleFormControlInput1" class="form-label">Password</label>
-        <input type="password" v-model='store.password' class="form-control" id="exampleFormControlInput1"
+        <input type="text" v-model='store.password' class="form-control" id="exampleFormControlInput1"
           placeholder="enter this Password Password=pass">
       </div>
       <button @:click="store.provideaccess()" type="button" class="btn btn-primary">Войти</button>
-    
+
     </div>
 
   </div>
@@ -32,16 +32,17 @@
     <header class="header mt-5">
       <button @:click="store.provideaccess()" type="button" class="btn btn-primary px-2 mx-5">Выход</button>
       <span class="header-text text-center ">
+        {{ store.model}}
         <h2 class="pb-5"> Пример SPA c применением Pinia </h2>
-    
       </span>
 
       <div class="row g-3 d-flex justify-content-center  ">
         <div class="col-auto">
           <label for="inputPassword2" class="visually-hidden">Поиск</label>
-          <input v-model=store.model type="password" class="form-control" id="inputPassword2" placeholder="поиск">
+          <input v-model=store.model  @input="store.filterbyinput()"   type="text" class="form-control" id="inputPassword2" placeholder="поиск">
         </div>
         <div class="col-auto">
+
           <button @:click="store.filterbyinput()" type="submit" class="btn btn-primary mb-3">искать</button>
         </div>
       </div>
@@ -53,7 +54,7 @@
           </router-link>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary">
             {{ store.addtobasketpost.length }}
-            <span class="visually-hidden">unread messages</span></span>
+          </span>
         </button>
 
       </div>
@@ -73,30 +74,31 @@
 </template>
 
 <script setup>
-
 import { computed } from 'vue'
+const msg = 'Hello!'
 
+function log() {
+  console.log(store.model)
+}
 
-
-
-// import { useStore } from "../store/Store";
-// const store = useStore();
-// store.fetchPosts()
 
 const Message = computed(() => {
-
   return store.addtobasketpost.length !== 0 ? `Открыть корзину` : 'В корзине пусто'
 })
 
+//  computed(() => {
+//   if (store.model == null || store.model == '') {
+//     return
+//   } else {
 
-
-
-
-
+    
+//       return store.model
+//     }
+// })
 
 
 
 import { useStore } from "./store/Store";
 const store = useStore();
-// store.fetchPosts()
+
 </script>

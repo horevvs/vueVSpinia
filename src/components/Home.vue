@@ -2,24 +2,19 @@
   <div>
 
     <div v-for="(item, index) in store.posts" v-bind:key="index">
-
       <div class="movie">
         <img :src=item.url class="movie-img" />
         <div>
           <div class="movie-name ">
             <span> {{ item.title }} </span>
-
             <span> стоимость {{ Math.round(item.id) }} руб. </span>
           </div>
-
           <div class="movie-buttons">
             <button type="button" class="btn btn-danger text-danger mt-1"> <router-link
                 class="link-light" :to="'/' + item.id"> Посмотреть товар</router-link></button>
             <button  @click="store.addtoBasket(item.id)" class="btn btn-primary m-2 "> В корзину</button>
-
           </div>
         </div>
-
       </div>
     </div>
     <button @click="store.addlist()"

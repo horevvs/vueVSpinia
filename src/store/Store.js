@@ -6,13 +6,16 @@ import { defineStore } from "pinia";
 export const useStore = defineStore("Store", {
 
     state: () => ({
-
         posts: null,
+        filtered: null,
         model: null,
+        model2: null,
         username: null,
         password: null,
         addtobasketpost: [],
         addToposts2: [],
+        ara: [],
+        ara2: [],
         addToposts3: [],
         addToposts4: [],
         adress: null,
@@ -25,7 +28,6 @@ export const useStore = defineStore("Store", {
         dataAfterfetch: null,
         show: true,
         hide: false,
-
     }),
     getters: {
         doubleCount: (state) => {
@@ -34,7 +36,10 @@ export const useStore = defineStore("Store", {
                 return (sum + elem.quantity * elem.id);
             }, 0);
             return result
-        }
+        },
+
+
+
     },
 
 
@@ -47,7 +52,7 @@ export const useStore = defineStore("Store", {
             const result = await response.json();
             result.forEach((item) => { item.quantity = 0 });
             this.posts = result
-
+            this.filtered = result
         },
         // дорендериваем при клике по 5 штук
         async addlist() {
@@ -56,17 +61,29 @@ export const useStore = defineStore("Store", {
             const result = await response.json();
             result.forEach((item) => { item.quantity = 0 });
             this.posts = result
+            this.filtered = result
         },
 
 
         async filterbyinput() {
+            //  просто фильтрует по имени, как варинт простая фильтрация по теме  
 
-            //  просто фильтрует по имени, как варинт простая фильтрация по теме          
+            if (this.model == '') {
+                this.posts = this.filtered
+            }
 
-            let res = this.posts.filter(item => item.title == this.model)
-            console.log(this.posts);
+            else {
+                this.ara2 = []
+                this.posts.filter((elem) => {
+                    if (elem.title.includes(this.model)) {
+                        this.ara2.push(elem)
+                    }
+                    // делаем перерендер
+                    this.posts = this.ara2
+                })
 
-            this.posts = res
+            }
+
 
 
         },
